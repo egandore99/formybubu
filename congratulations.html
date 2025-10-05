@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Te iubesc 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffd6e0, #ffe5ec);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    img.main {
+      height: 220px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    h1 {
+      margin-top: 25px;
+      font-size: 2.2rem;
+      text-align: center;
+      color: #d63384;
+      z-index: 2;
+      position: relative;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+      text-align: center;
+      color: #444;
+      max-width: 400px;
+      z-index: 2;
+      position: relative;
+    }
+
+    
+    .bg-img {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      animation: rotate360 40s linear infinite;
+    }
+
+    @keyframes rotate360 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    
+    .falling-flower {
+      position: absolute;
+      top: -50px;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
+    }
+
+    .instant-link {
+        display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+<button id="playBtn" style="background-color: red; color: white; padding: 12px 24px;">click aici pt atmosfera</button>
+
+<audio id="audio" loop>
+  <source src="melodie.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById("audio");
+  const btn = document.getElementById("playBtn");
+
+  btn.addEventListener("click", () => {
+    audio.play();
+    btn.style.display = "none"; 
+  });
+</script>
+
+
+
+
+  <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bear kiss" class="main fade" />
+  <h1>WOOOO!!! I love you bubi pufi pookie boobie 💞</h1>
+  <p>Poftim crini frumoaso daca nu ti au placut astea ca nimic nu ti convine bucoasa mea.  
+  I love you boo. 💗💗💗💗</p>
+
+  <script>
+    
+    const bgImages = [
+      "https://st2.depositphotos.com/7036298/9863/i/950/depositphotos_98633376-stock-photo-happy-nerd-man-with-glasses.jpg",
+      "denisa.jpg",
+      "https://georgiaatelier.ro/wp-content/uploads/2024/01/B100.jpg"
+    ];
+
+    const positions = [
+      { top: "10%", left: "5%" },
+      { top: "60%", left: "15%" },
+      { top: "30%", left: "75%" }
+    ];
+
+    const body = document.body;
+
+    bgImages.forEach((src, i) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.className = "bg-img";
+      const size = Math.floor(Math.random() * 180) + 320; 
+      img.style.width = `${size}px`;
+      img.style.top = positions[i].top;
+      img.style.left = positions[i].left;
+      body.appendChild(img);
+    });
+
+    // Ploaie de flori
+    const flowerImages = [
+      "https://www.svgrepo.com/show/276106/flower-rose.svg",
+      "https://www.svgrepo.com/show/407591/teddy-bear.svg", 
+      "https://www.svgrepo.com/show/212988/kiss-wink.svg"
+    ];
+
+    function createFallingFlower() {
+      const img = document.createElement("img");
+      img.src = flowerImages[Math.floor(Math.random() * flowerImages.length)];
+      img.className = "falling-flower";
+      img.style.left = Math.random() * 100 + "vw";
+      img.style.width = 30 + Math.random() * 40 + "px"; 
+      img.style.animationDuration = 5 + Math.random() * 5 + "s"; 
+      img.style.animationDelay = Math.random() * 5 + "s";
+      body.appendChild(img);
+
+      
+      setTimeout(() => { img.remove(); }, parseFloat(img.style.animationDuration) * 1000 + parseFloat(img.style.animationDelay) * 1000);
+    }
+
+    setInterval(createFallingFlower, 300); 
+  </script>
+</body>
+</html>
+
+
+
+

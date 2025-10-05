@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Will you be my Valentine?</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffc1cc, #ffdde1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+      overflow: hidden;
+    }
+
+    img {
+      height: 220px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin-top: 25px;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      padding: 12px 26px;
+      font-size: 16px;
+      border-radius: 2px; 
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+      flex-shrink: 0;
+    }
+
+    .yes {
+      background-color: #34d399;
+      transform-origin: left center;
+    }
+    .yes:hover {
+      background-color: #059669;
+    }
+
+    .no {
+      background-color: #f87171;
+    }
+    .no:hover {
+      background-color: #dc2626;
+    }
+
+    .fade {
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+  <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Cute bear" class="fade" />
+  <h1>Ma iub?? Bubi pufi pookie boobie :> 💖</h1>
+
+  <div class="buttons">
+    <button class="yes" id="yesBtn">DA!!!</button>
+    <button class="no" id="noBtn">Nu.</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("noBtn");
+    const yesButton = document.getElementById("yesBtn");
+
+    const noTexts = [
+      "Nu.", "Sigur?", "SIGUR?", "Bine..", 
+      "CUM ADICA NU?!", "Iti iau Crini :>", 
+      "Dai click doar sa vezi ce se intampla asa-i?", "YES", "Imma kms", 
+      "ok im dead gg", ":((((", "Press here to detonate the explosive device inside your teddy bear", 
+      "Bine.. No ;("
+    ];
+
+    let clickCount = 0;
+    let yesScale = 1;
+
+    noButton.addEventListener("click", () => {
+      clickCount++;
+
+      
+      noButton.textContent = noTexts[Math.min(clickCount, noTexts.length - 1)];
+
+      
+      yesScale *= 1.15;
+      yesButton.style.transform = `scale(${yesScale})`;
+
+      
+      noButton.style.marginLeft = `${yesButton.offsetWidth * (yesScale - 1) + 10}px`;
+    });
+
+    yesButton.addEventListener("click", () => {
+      window.location.href = "congratulations.html";
+    });
+  </script>
+</body>
+</html>
+
+
